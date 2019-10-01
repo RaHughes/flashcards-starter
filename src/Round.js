@@ -17,20 +17,19 @@ class Round {
     return turn.giveFeedback()
   }
 
-  currentCard() {
+  returnCurrentCard() {
     return this.deck.cards[this.turns]
   }
 
   endRound() {
     console.log(`** Round over! ** You answered <${this.calculatePercentCorrect()}>% of the questions correctly!`)
-  }
+  }    
 
   calculatePercentCorrect() {
-    if(this.guess === this.card.correctAnswer) {
-      return 'correct!'
-      } else {
-    }
-  }
+    let numCorrect = this.deck.cards.length - this.incorrectGuesses.length;
+    let percentCorrect = (numCorrect / this.deck.cards.length) * 100;
+    return Math.floor(percentCorrect);
+  }  
 }
 
 module.exports = Round;
